@@ -1,40 +1,50 @@
-GitBook Sample Plugin
-==============
+# Gitbook Custom Image Div Plugin
 
-This is a model for GitBook plugins.
-
-## How GitBook plugin works?
-
-A plugin for GitBook is a node package that can be published on [NPM](http://www.npmjs.org). It has to follow the name convention: `gitbook-plugin-*name*`.
-
-### package.json
-
-#### name
-
-The package name should begin with ```gitbook-plugin-```.
-
-Examples: `gitbook-plugin-mixpanel`, `gitbook-plugin-googleanalytics`.
-
-#### engine
-
-The package.json should contain a `engine` field using [the standard norm](https://www.npmjs.org/doc/json.html#engines).
+This plugin can display elements in the *div* correctly in HTML. 
 
 ```
-"engines": {
-    "gitbook": "*"
+<div class="image">
+  <img src="/assets/image-url.jpg" alt="Alt Text" />
+</div>
+```
+
+## Usage
+
+### Installation
+
+Add the plugin to your `book.json`:
+
+```
+{
+    "plugins" : [ "image-div" ]
 }
 ```
 
-For example if you want your plugin to supports only GitBook version supperior to 0.3.1:
+### Add Images
+
+For example, add images normally to your document using Markdown
 
 ```
-"engines": {
-    "gitbook": ">=0.3.1"
+<div class="image">
+  ![image](/assets/image.jpg)
+</div>
+```
+
+Each image will be wrapped in a div like this
+
+```
+<div class="image">
+	<img src="/assets/image.jpg" alt="image" />
+</div>
+```
+
+### Style It
+
+Add the following CSS to your book to center your images and add some additional spacing:
+
+```
+div.image {
+	text-align: center;
+	padding: 15px 0px;
 }
 ```
-
-### entry point
-
-The plugin entry point should return an object with some metadata.
-
-
